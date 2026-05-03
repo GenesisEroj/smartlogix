@@ -1,0 +1,51 @@
+==============================================
+SMARTLOGIX - ENLACES A REPOSITORIOS
+Desarrollo Fullstack III - DSY1106
+==============================================
+
+REPOSITORIO PRINCIPAL
+---------------------
+Nombre: smartlogix
+URL: https://github.com/GenesisEroj/smartlogix
+Descripción: Repositorio principal del proyecto. Contiene la documentación 
+general, análisis de patrones arquitectónicos, estrategia de branching y 
+enlaces a los repositorios de cada componente del sistema.
+
+COMPONENTES
+-----------
+
+1. FRONTEND
+Nombre: smartlogix-frontend
+URL: https://github.com/GenesisEroj/smartlogix-frontend
+Descripción: Componente frontend desarrollado como paquete NPM. Incluye la 
+interfaz de usuario para la gestión de pedidos, inventario y envíos, 
+implementando patrones de diseño para asegurar componentes eficientes y 
+mantenibles.
+
+2. BACKEND FOR FRONTEND (BFF)
+Nombre: smartlogix-bff
+URL: https://github.com/GenesisEroj/smartlogix-bff
+Descripción: Intermediario entre el frontend y los microservicios. Gestiona 
+y consolida las respuestas de MS Pedidos, MS Inventario y MS Envíos, 
+optimizando la comunicación para la interfaz de usuario.
+
+3. MICROSERVICIO PEDIDOS
+Nombre: smartlogix-ms-pedidos
+URL: https://github.com/GenesisEroj/smartlogix-ms-pedidos
+Descripción: Microservicio de Pedidos desarrollado con Spring Boot. Gestiona 
+la creación y seguimiento de pedidos, implementando los patrones Factory 
+Method, CQRS y Repository, publicando eventos mediante Kafka para la 
+comunicación asíncrona con otros microservicios.
+
+4. MICROSERVICIO INVENTARIO
+Nombre: smartlogix-ms-inventario
+URL: https://github.com/GenesisEroj/smartlogix-ms-inventario
+Descripción: Microservicio de Inventario desarrollado con Spring Boot. 
+Gestiona el stock de productos implementando los patrones Repository y CQRS, 
+consumiendo eventos desde Kafka para actualizar el inventario de forma 
+asíncrona ante nuevos pedidos.
+
+==============================================
+Equipo: Genesis Eroj - Francisco Monsalve
+Asignatura: DSY1106 - Desarrollo Fullstack III
+==============================================
