@@ -34,10 +34,9 @@ smartlogix/
 | MS Inventario | [smartlogix-ms-inventario](https://github.com/GenesisEroj/smartlogix-ms-inventario) | 8082 |
 
 ## Estrategia de Branching
-Se utiliza **Git Flow** simplificado:
-main        ← código estable
-develop     ← integración de features
-feature/*   ← desarrollo de funcionalidades
+Se utiliza **GitHub Flow**:
+main        ← rama principal, siempre desplegable
+feature/*   ← ramas de funcionalidad creadas desde main, integradas vía Pull Request
 
 ## Requisitos del Sistema
 - Java 17+
