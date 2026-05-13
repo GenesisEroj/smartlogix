@@ -5,12 +5,14 @@ desarrollada sobre una arquitectura de microservicios.
 Permite gestionar pedidos e inventario de forma eficiente y escalable.
 Arquitectura
 SmartLogix está compuesto por los siguientes componentes:
+
 smartlogix/
 ├── smartlogix-frontend      # Interfaz de usuario (React/NPM)
 ├── smartlogix-bff           # Backend For Frontend
 ├── smartlogix-ms-pedidos    # Microservicio de Pedidos
 ├── smartlogix-ms-inventario # Microservicio de Inventario
 └── smartlogix-archetype/    # Arquetipo Maven para microservicios
+
                     ┌─────────────────────┐
                     │  smartlogix-frontend │  puerto 3000
                     │  React + Vite (NPM)  │
@@ -26,6 +28,7 @@ smartlogix/
            │  puerto 8082   │    │    puerto 8081       │
            │  MySQL JPA     │    │    MySQL JPA         │
            └────────────────┘    └──────────────────────┘
+           
 Patrones Arquitectónicos Implementados
 
 BFF (Backend For Frontend): Intermediario entre frontend y microservicios
