@@ -7,8 +7,8 @@ REPOSITORIO PRINCIPAL
 ---------------------
 Nombre: smartlogix
 URL: https://github.com/GenesisEroj/smartlogix
-Descripción: Repositorio principal del proyecto. Contiene la documentación 
-general, análisis de patrones arquitectónicos, estrategia de branching y 
+Descripción: Repositorio principal del proyecto. Contiene la documentación
+general, análisis de patrones arquitectónicos, estrategia de branching y
 enlaces a los repositorios de cada componente del sistema.
 
 COMPONENTES
@@ -17,33 +17,42 @@ COMPONENTES
 1. FRONTEND
 Nombre: smartlogix-frontend
 URL: https://github.com/GenesisEroj/smartlogix-frontend
-Descripción: Componente frontend desarrollado como paquete NPM. Incluye la 
-interfaz de usuario para la gestión de pedidos, inventario y envíos, 
-implementando patrones de diseño para asegurar componentes eficientes y 
-mantenibles.
+Descripción: Componente frontend desarrollado como módulo NPM reutilizable
+con React 18 + Vite. Incluye la interfaz de usuario para la gestión de
+pedidos e inventario, implementando los patrones Factory Method (api.js),
+Observer (useNotifications.js) y Repository (useInventario.js, usePedidos.js).
 
 2. BACKEND FOR FRONTEND (BFF)
 Nombre: smartlogix-bff
 URL: https://github.com/GenesisEroj/smartlogix-bff
-Descripción: Intermediario entre el frontend y los microservicios. Gestiona 
-y consolida las respuestas de MS Pedidos, MS Inventario y MS Envíos, 
-optimizando la comunicación para la interfaz de usuario.
+Puerto: 8084
+Descripción: Intermediario entre el frontend y los microservicios desarrollado
+con Spring Boot 3.3.5. Gestiona y consolida las respuestas de MS Pedidos y
+MS Inventario, implementando los patrones Factory Method (WebClientConfig.java)
+y Strategy (InventarioService.java, PedidosService.java).
 
 3. MICROSERVICIO PEDIDOS
 Nombre: smartlogix-ms-pedidos
 URL: https://github.com/GenesisEroj/smartlogix-ms-pedidos
-Descripción: Microservicio de Pedidos desarrollado con Spring Boot. Gestiona 
-la creación y seguimiento de pedidos, implementando los patrones Factory 
-Method, CQRS y Repository, publicando eventos mediante Kafka para la 
-comunicación asíncrona con otros microservicios.
+Puerto: 8081
+Descripción: Microservicio de Pedidos desarrollado con Spring Boot 3.3.5 y
+Spring Data JPA. Gestiona la creación y seguimiento de pedidos implementando
+los patrones Factory Method, CQRS y Repository. Conectado a MySQL mediante JPA.
 
 4. MICROSERVICIO INVENTARIO
 Nombre: smartlogix-ms-inventario
 URL: https://github.com/GenesisEroj/smartlogix-ms-inventario
-Descripción: Microservicio de Inventario desarrollado con Spring Boot. 
-Gestiona el stock de productos implementando los patrones Repository y CQRS, 
-consumiendo eventos desde Kafka para actualizar el inventario de forma 
-asíncrona ante nuevos pedidos.
+Puerto: 8082
+Descripción: Microservicio de Inventario desarrollado con Spring Boot 3.3.5 y
+Spring Data JPA. Gestiona el stock de productos implementando los patrones
+Repository, CQRS y DTO. Conectado a MySQL mediante JPA.
+
+5. ARQUETIPO MAVEN
+Nombre: smartlogix-archetype
+URL: https://github.com/GenesisEroj/smartlogix-archetype
+Descripción: Arquetipo Maven personalizado que genera la estructura base de
+cualquier microservicio del proyecto con Spring Boot + JPA + MySQL
+preconfigurado. Usado como base para generar ms-inventario y ms-pedidos.
 
 ==============================================
 Equipo: Genesis Eroj - Francisco Monsalve

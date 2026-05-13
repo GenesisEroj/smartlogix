@@ -1,58 +1,66 @@
-# SmartLogix
-
-## Descripción
+SmartLogix
+Descripción
 SmartLogix es una plataforma de gestión logística para eCommerce PYMEs,
-desarrollada sobre una arquitectura de microservicios desplegada en AWS.
-Permite gestionar pedidos, inventario y envíos de forma eficiente y escalable.
-
-## Arquitectura
+desarrollada sobre una arquitectura de microservicios.
+Permite gestionar pedidos e inventario de forma eficiente y escalable.
+Arquitectura
 SmartLogix está compuesto por los siguientes componentes:
-
 smartlogix/
 ├── smartlogix-frontend      # Interfaz de usuario (React/NPM)
 ├── smartlogix-bff           # Backend For Frontend
 ├── smartlogix-ms-pedidos    # Microservicio de Pedidos
 ├── smartlogix-ms-inventario # Microservicio de Inventario
-└── archetype/               # Arquetipo Maven para microservicios
+└── smartlogix-archetype/    # Arquetipo Maven para microservicios
+                    ┌─────────────────────┐
+                    │  smartlogix-frontend │  puerto 3000
+                    │  React + Vite (NPM)  │
+                    └──────────┬──────────┘
+                               │ REST API
+                    ┌──────────▼──────────┐
+                    │   smartlogix-bff     │  puerto 8084
+                    │  Backend For Frontend│
+                    └────┬─────────────┬──┘
+                         │             │
+           ┌─────────────▼──┐    ┌─────▼──────────────┐
+           │ ms-inventario  │    │    ms-pedidos        │
+           │  puerto 8082   │    │    puerto 8081       │
+           │  MySQL JPA     │    │    MySQL JPA         │
+           └────────────────┘    └──────────────────────┘
+Patrones Arquitectónicos Implementados
 
+BFF (Backend For Frontend): Intermediario entre frontend y microservicios
+Repository Pattern: Abstracción de acceso a datos vía Spring Data JPA
+Factory Method: Creación estandarizada de objetos
+CQRS: Separación de comandos y consultas
+Strategy: Encapsulación de lógica de comunicación entre servicios
+Observer: Sistema de notificaciones desacoplado en el frontend
+DTO: Transferencia de datos entre capas
 
-## Patrones Arquitectónicos Implementados
-- **API Gateway**: Punto de entrada único al sistema
-- **Repository Pattern**: Abstracción de acceso a datos
-- **Factory Method**: Creación estandarizada de objetos
-- **CQRS**: Separación de comandos y consultas
-- **BFF (Backend For Frontend)**: Intermediario entre frontend y microservicios
-- **DTO**: Transferencia de datos entre capas
+Repositorios
+ComponenteRepositorioPuertoFrontendsmartlogix-frontend3000BFFsmartlogix-bff8084MS Pedidossmartlogix-ms-pedidos8081MS Inventariosmartlogix-ms-inventario8082Arquetiposmartlogix-archetype—
+Estrategia de Branching
+Se utiliza GitHub Flow:
+main        ← rama principal, siempre desplegable
+feature/*   ← ramas de funcionalidad creadas desde main
+               integradas vía Pull Request
+Requisitos del Sistema
 
-## Repositorios
+Java 17+ (probado con Java 25 / Amazon Corretto)
+Maven 3.9+
+Node.js 18+
+MySQL 8.0+
 
-| Componente | Repositorio | Puerto |
-|---|---|---|
-| Frontend | [smartlogix-frontend](https://github.com/GenesisEroj/smartlogix-frontend) | 3000 |
-| BFF | [smartlogix-bff](https://github.com/GenesisEroj/smartlogix-bff) | 8080 |
-| MS Pedidos | [smartlogix-ms-pedidos](https://github.com/GenesisEroj/smartlogix-ms-pedidos) | 8081 |
-| MS Inventario | [smartlogix-ms-inventario](https://github.com/GenesisEroj/smartlogix-ms-inventario) | 8082 |
+Orden de Ejecución
 
-## Estrategia de Branching
-Se utiliza **Git Flow** simplificado:
-main        ← código estable
-develop     ← integración de features
-feature/*   ← desarrollo de funcionalidades
+MySQL (puerto 3306)
+MS Inventario (puerto 8082): mvn spring-boot:run
+MS Pedidos (puerto 8081): mvn spring-boot:run
+BFF (puerto 8084): mvn spring-boot:run
+Frontend (puerto 3000): npm install && npm run dev
 
-## Requisitos del Sistema
-- Java 17+
-- Maven 3.9+
-- Node.js 18+
-- MySQL 8.0+
+Equipo
 
-## Orden de Ejecución
-1. MS Inventario (puerto 8082)
-2. MS Pedidos (puerto 8081)
-3. BFF (puerto 8080)
-4. Frontend (puerto 3000)
+Genesis Eroj
+Francisco Monsalve
 
-## Equipo
-- Genesis Eroj
-- Francisco Monsalve
-
-**DSY1106 - Desarrollo Fullstack III**
+DSY1106 - Desarrollo Fullstack III
